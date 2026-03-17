@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>RigidSSL</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" type="image/png" href="img/seal_icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+
+    <script src="js/app.js"></script>
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            processEscapes: true
+          }
+        });
+      </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                Rigidity-Aware Geometric Pretraining for<br>Protein Design and Conformational Ensembles<br>
+                <small>
+                    ICLR 2026
+                </small>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="">Zhanghan Ni<sup>1 &ast;</sup></a>
+                    </li>
+                    <li>
+                        <a href="https://yanjinglili.github.io/">Yanjing Li<sup>2 &ast;</sup></a>
+                    </li>
+                    <li>
+                        <a href="">Zeju Qiu<sup>3 &ast;</sup></a>
+                    </li>
+                    <li>
+                        <a href="https://is.mpg.de/~bs">Bernhard Sch&ouml;lkopf<sup>3</sup></a>
+                    </li>
+                    <br>
+                    <li>
+                        <a href="https://scholar.google.com/citations?user=bZUqlakAAAAJ&hl=en">Hongyu Guo<sup>4,5</sup></a>
+                    </li>
+                    <li>
+                        <a href="https://wyliu.com/">Weiyang Liu<sup>3,6</sup></a>
+                    </li>
+                    <li>
+                        <a href="https://chao1224.github.io/">Shengchao Liu<sup>6</sup></a>
+                    </li>
+                </ul>
+
+                <div class="col-md-10 text-center col-md-offset-1">
+                <ul class="list-inline">
+                    <li>
+                        <sup>1</sup>University of Illinois Urbana-Champaign
+                    </li>
+                    <li>
+                        <sup>2</sup>University of Washington
+                    </li>
+                    <li>
+                        <sup>3</sup>MPI for Intelligent Systems, T&uuml;bingen
+                    </li>
+                    <li>
+                        <sup>4</sup>National Research Council Canada
+                    </li>
+                    <li>
+                        <sup>5</sup>University of Ottawa
+                    </li>
+                    <li>
+                        <sup>6</sup>The Chinese University of Hong Kong
+                    </li>
+                    <br>
+                    <li>
+                        <sup>&ast;</sup>Equal contribution
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <a href="https://arxiv.org/abs/2603.02406">
+                            <image src="img/paper.jpg" height="60px">
+                                <h4><strong>Paper</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/ZhanghanNi/RigidSSL">
+                            <image src="img/github.png" height="60px">
+                                <h4><strong>Code</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://iclr.cc/virtual/2026/poster/10008912">
+                            <image src="img/poster.png" height="60px">
+                                <h4><strong>Poster</strong></h4>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+
+        <br>
+        <div class="row" style="margin-bottom: 45px;">
+            <div class="col-md-4 col-md-offset-1" style="display: flex; align-items: center;">
+                <p class="text-justify" style="font-size: 16px;">
+                    <b>1.</b> RigidSSL use <b>inertial frames</b> to establish a canonical reference system for protein structures.
+                </p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img width="100%" src="static/canonicalization.gif">
+            </div>
+        </div>
+
+        <div class="row" style="margin-bottom: 45px;">
+            <div class="col-md-4 col-md-offset-1" style="display: flex; align-items: center;">
+                <p class="text-justify" style="font-size: 16px;">
+                    <b>2.</b> RigidSSL learns protein dynamics by <b>maximizing mutual information</b> between two conformations $g_0$ and $g_1$.
+                </p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img width="100%" src="static/perturbation.gif">
+            </div>
+        </div>
+
+        <div class="row" style="margin-bottom: 45px;">
+            <div class="col-md-4 col-md-offset-1" style="display: flex; align-items: center;">
+                <p class="text-justify" style="font-size: 16px;">
+                    <b>3.</b> RigidSSL variants improve protein structure <b>designability</b>, <b>novelty</b>, <b>diversity</b>, and <b>secondary structure statistics</b>.
+                </p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img width="100%" src="static/figure2_ss_struc.png">
+            </div>
+        </div>
+
+        <div class="row" style="margin-bottom: 45px;">
+            <div class="col-md-4 col-md-offset-1" style="display: flex; align-items: center;">
+                <p class="text-justify" style="font-size: 16px;">
+                    <b>4.</b> RigidSSL generalizes to long protein chains of 700-800 residues.
+                </p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img width="100%" src="static/figure4_long_chain.png">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Citation
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" rows="8" readonly>
+@inproceedings{
+  ni2026rigidssl,
+  title={Rigidity-Aware Geometric Pretraining for Protein Design and Conformational Ensembles},
+  author={Zhanghan Ni and Yanjing Li and Zeju Qiu and Bernhard Sch{\"o}lkopf and Hongyu Guo and Weiyang Liu and Shengchao Liu},
+  booktitle={International Conference on Learning Representations},
+  year={2026},
+  url={https://arxiv.org/abs/2603.02406}
+}
+</textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
